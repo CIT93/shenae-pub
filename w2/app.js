@@ -7,8 +7,9 @@ const totalDisplayElement = document.getElementById("total-display")
 const addItemButton = document.getElementById("add-item-btn")
 
 //These variables will change as the user interacts with the page.
-let userName = 'Shena';
-let clickCount = 0;
+
+let totalCost = 0;
+const itemPrice = 15;
 
 // ---  Part 2: Define and call the handleButtonClick Function--
 // A function is a block of code designed to perform a particular task.
@@ -50,10 +51,9 @@ document.addEventListener('DOMContentLoaded', function(){
 console.log('DOM fully loaded and parsed, App is ready for interaction')
 // Attach an event listener to our 'updateButton.
 // When 'updateButton' receives a 'click' event, the 'handleButtonClick' function will execute.
- addItem
- Button.addEventListener('click', handleButtonClick);
+ addItemButton.addEventListener('click', handleButtonClick);
 
-totalDisplayElement.textContent = `Welcome, ${userName}! Click the button below to start counting`
+//totalDisplayElement.textContent = `Welcome, ${userName}! Click the button below to start counting`
 })
 
 
