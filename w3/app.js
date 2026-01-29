@@ -22,7 +22,7 @@ const summaryDiv = document.getElementById('order-summary');
   }
 
 // 3. Initialize the app
-const init = function () {
+  const init = function () {
     console.log("App Initialized");
    orderFormEl.addEventListener("submit", handleOrderSubmit);
 };
