@@ -16,7 +16,7 @@ const summaryDiv = document.getElementById('order-summary');
  const data = orderHandler.getOrderInputs();
 
     // Update the UI
-    summaryDiv.textContent = `Order Confirmed: ${data.qty} ${data.size} shirt(s).`;
+    summaryDiv.textContent = `Order Confirmed: ${data.qty} ${data.size} shirt(s) Gift Wrap: ${data.giftWrap}.`;
     console.log('Order Received!', data);
 
   }
