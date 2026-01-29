@@ -36,5 +36,3 @@ export function getOrderInputs() {
     return data;
 }
 
-// TEMPORARY TEST:
-console.log(getOrderInputs());
