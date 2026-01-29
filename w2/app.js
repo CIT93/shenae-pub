@@ -1,10 +1,13 @@
-console.log('Hello from app.js! Your JavaScript is connected and running!');
+import * as orderForm from ".//order-handler.js"; 
+console.log(getOrderInputs());
+
+// Select the T-Shirt form and the summary  
 
 // --- Part 1: Select HTML Elements ----
 // We use document.getElementById() to get a reference to an element by its unique ID.
 // We store these references in 'const' variables because the elements themselves won't change.
 
-const totalDisplayElement = document.getElementById("total-display");
+const orderForm = document.getElementById("order-form");
 const addItemButton = document.getElementById("add-item-btn");
 
 // These variables will change as the user interacts with the page.
