@@ -1,12 +1,12 @@
 body {
     font-family: Arial, sans-serif;
     margin: 20px;
-    background-color: #2e3e417b; /* A light grey background */
-    color: #444051;
+    background-color: #ae870962; /* A light grey background */
+    color: #390209;
 }
 
 h1 {
-    color: #276e0b;
+    color: #0b6205;
 }
 
 p {
@@ -18,7 +18,7 @@ p {
    max-width: 800px;
    margin: 0 auto; /* Center the content */
    padding: 15px;
-   background-color: #ffffff;
-   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+   background-color: #97369a;
+   box-shadow: 0 2px 5px rgba(59, 21, 140, 0.1);
    border-radius: 8px;
 }
