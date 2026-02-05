@@ -1,24 +1,40 @@
 // So the browser loads the new file
 import * as orderHandler from "./order-handler.js";
-import * as priceCalculator from "./price-calculator.js"; // so the browser loads that file as well
+import * as priceCalculator from "./price-calculator.js"; 
+import * as resultsDisplay from "./results-display.js";
 // --- Part 1: Select the T-shirt from the summary div
 const orderFormEl = document.getElementById("order-form");
 const summaryDiv = document.getElementById('order-summary');
-
+// Step 3.2 The Array
+const orders = [];
 
 
 // These variables will change as the user interacts with the page.
 
-// --- Part 2: Handle the submit event
-  const handleOrderSubmit = function(event) {
+// --- Part 3.3 Update handleOrderSubmit
+    const handleOrderSubmit = function(event) {
     event.preventDefault(); // Stop pagefrom reloading
+   
+    // 1) Get the form data object
+    const data = orderHandler.getOrderInputs();
+   
+    // 2) --- Calculate --- total price (returns {totalPrice: ...})
+    const calculatedPrice = priceCalculator.calculateTotal(data);
 
+    // 3) Timestamp object
+    const timestamp = { timestamp: new Date().toISOString() };
 
-    //  Get the data object (contains String, Number, and Boolean)
- const data = orderHandler.getOrderInputs();
+    // 4) --- Merge --- into one object (The Spread Operator)
+    const newOrder = { ...data, ...calculatedPrice, ...timestamp };
 
-    // Update the UI
-    summaryDiv.textContent = `Order Confirmed: ${data.qty} ${data.size} shirt(s) Gift Wrap: ${data.giftWrap}.`;
+    // 5) --- Store --- new objects in orders array
+    orders.push(newOrder);
+
+    // 6) --- Verify --- the orders history increases
+    console.log(orders);
+
+    resultsDisplay.displayResults(newOrder);
+    
     console.log('Order Received!', data);
 
   }
