@@ -1,9 +1,11 @@
 // So the browser loads the new file
 import * as orderHandler from "./order-handler.js";
-
+import * as priceCalculator from "./price-calculator.js"; // so the browser loads that file as well
 // --- Part 1: Select the T-shirt from the summary div
 const orderFormEl = document.getElementById("order-form");
 const summaryDiv = document.getElementById('order-summary');
+
+
 
 // These variables will change as the user interacts with the page.
 
@@ -29,3 +31,8 @@ const summaryDiv = document.getElementById('order-summary');
 
 document.addEventListener('DOMContentLoaded', init);
 
+
+
+
+
+// Step 2 - added line 3

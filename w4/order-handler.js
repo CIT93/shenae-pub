@@ -32,7 +32,7 @@ export function getOrderInputs() {
         giftWrap: giftWrapInput.checked // Use .checked for booleans (true/false)
     };
     console.log('Order Data Object created:');
-console.log('This is my ..', qtyInput.value)
+    console.log(qtyInput.value)
     return data;
 }
 
