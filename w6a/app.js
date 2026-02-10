@@ -2,6 +2,8 @@
 import * as orderHandler from "./order-handler.js";
 import * as priceCalculator from "./price-calculator.js"; 
 import * as resultsDisplay from "./results-display.js";
+import * as orderStorage from './order-storage.js';
+
 // --- Part 1: Select the T-shirt from the summary div
 const orderFormEl = document.getElementById("order-form");
 const summaryDiv = document.getElementById('order-summary');
@@ -42,6 +44,13 @@ const orders = [];
 // 3. Initialize the app
   const init = function () {
     console.log("App Initialized");
+   const loadedOrders = orderStorage.loadOrders()
+    
+   if (loadedOrders.length > 0) {
+      orders.push(...loadedOrders);
+    console.log('Orders Loaded');
+    }
+ 
    orderFormEl.addEventListener("submit", handleOrderSubmit);
 };
 
@@ -51,4 +60,4 @@ document.addEventListener('DOMContentLoaded', init);
 
 
 
-// Step 2 - added line 3
+
