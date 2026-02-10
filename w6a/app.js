@@ -32,6 +32,8 @@ const orders = [];
     // 5) --- Store --- new objects in orders array
     orders.push(newOrder);
 
+    orderStorage.saveOrders(orders);
+
     // 6) --- Verify --- the orders history increases
     console.log(orders);
 
