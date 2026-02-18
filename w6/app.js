@@ -1,7 +1,7 @@
 // So the browser loads the new file
 import * as orderHandler from "./order-handler.js";
 import * as priceCalculator from "./price-calculator.js"; 
-import * as resultsDisplay from "./results-display.js";
+import * as orderList from './order-list.js';
 import * as orderStorage from './order-storage.js';
 
 // --- Part 1: Select the T-shirt from the summary div
@@ -33,11 +33,13 @@ const orders = [];
     orders.push(newOrder);
 
     orderStorage.saveOrders(orders);
+    
+    orderList.renderOrders(orders)
 
     // 6) --- Verify --- the orders history increases
     console.log(orders);
 
-    resultsDisplay.displayResults(newOrder);
+    
     
     console.log('Order Received!', data);
 
@@ -48,18 +50,13 @@ const orders = [];
     console.log("App Initialized");
    const loadedOrders = orderStorage.loadOrders()
     
-   if (loadedOrders.length > 0) {
-      orders.push(...loadedOrders);
-    console.log('Orders Loaded');
-    }
+  if (loadedOrders.length > 0) {
+    orders.push(...loadedOrders);
+    // Render the full list instead of just the last one
+    orderList.renderOrders(orders);
+}
  
    orderFormEl.addEventListener("submit", handleOrderSubmit);
 };
 
 document.addEventListener('DOMContentLoaded', init);
-
-
-
-
-
-
