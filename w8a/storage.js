@@ -19,7 +19,7 @@ const LOCAL_STORAGE_KEY = 'carbonFootprintEntries';
 
  export const saveEntries = function(entries) {
    try {
-    LOCAL_STORAGE_KEY = 'carbonFootprintEntries';   // <- sabotaged line
+    // LOCAL_STORAGE_KEY = 'carbonFootprintEntries';   // <- sabotaged line
      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(entries));
      console.log('Data saved to localStorage Successfully!');
    } catch (error) {

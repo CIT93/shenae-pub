@@ -153,7 +153,7 @@ const createTableRow = function(entry) {
     row.innerHTML = `
         <td>${formatDateForDisplay(entry.timestamp)}</td>
         <td>${entry.householdMembers}</td>
-        <td>${formatHomeSizeDisplay(entry.homeSquareFootage, entry.isApartment)}</td>
+        <td>${formatHomeSizeDisplay(entry.homeSquareFootageSquareFootage, entry.isApartment)}</td>
         <td>${formatRadioValue(entry.dietType)}</td>
         <td>${formatRadioValue(entry.foodPackaging)}</td>
         <td>${entry.totalFootprint}</td>
