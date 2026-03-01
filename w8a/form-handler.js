@@ -67,7 +67,7 @@ export const getFormInputs = function() {
   
     return {
     householdMembers: parseInt(householdMembersInput.value) || 1,
-    houseSquareFootage: parseInt(homeSquareFootageInput.value) || 0,
+    homeSquareFootage: parseInt(homeSquareFootageInput.value) || 0,
     isApartment: isApartmentInput.checked,
     dietType: getSelectedRadioValue(dietTypeRadios),
     foodPackaging: getSelectedRadioValue(foodPackagingRadios)
