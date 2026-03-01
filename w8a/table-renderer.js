@@ -153,7 +153,7 @@ const createTableRow = function(entry) {
     row.innerHTML = `
         <td>${formatDateForDisplay(entry.timestamp)}</td>
         <td>${entry.householdMembers}</td>
-        <td>${formatHomeSizeDisplay(entry.homeSquareFootageSquareFootage, entry.isApartment)}</td>
+        <td>${formatHomeSizeDisplay(entry.homeSquareFootage, entry.isApartment)}</td>
         <td>${formatRadioValue(entry.dietType)}</td>
         <td>${formatRadioValue(entry.foodPackaging)}</td>
         <td>${entry.totalFootprint}</td>
@@ -191,11 +191,10 @@ export const renderTable = function(entries, callbacks) {
 
     }
     // Sort entries by timestamp (most recent first) before rendering.
- // We use a spread operator [...] to create a shallow copy so we don't modify the original array order.
- // Sorts the array in descending order (newest first)
- const sortedEntries = [...entries].sort(function(a, b) {
-   return new Date(a.timestamp) - new Date(b.timestamp); 
- });
+    // We use a spread operator [...] to create a shallow copy so we don't modify the original array order.
+    // Sorts the array in descending order (newest first)
+    const sortedEntries = [...entries].sort (function(a, b){
+        return new Date(b.timestamp) - new Date(a.timestamp)
     });
 
     // Loop through each entry and create a table row for it
