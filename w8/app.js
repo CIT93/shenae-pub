@@ -15,6 +15,15 @@ const handleOrderSubmit = function(event) {
     const timestamp = { timestamp: new Date().toISOString() };
     const newOrder = { ...data, ...calculatedPrice, ...timestamp };
 
+    // app.js - inside handleOrderSubmit
+const newOrder = {
+    id: Date.now().toString(), // <--- ADD THIS LINE (Unique ID based on time)
+    qty: qty,
+    size: size,
+    totalPrice: totalPrice,
+    // ... any other properties
+};
+
     orders.push(newOrder);
     orderStorage.saveOrders(orders);
     orderList.renderOrders(orders);
