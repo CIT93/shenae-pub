@@ -9,9 +9,12 @@ const orders = [];
 
 const handleOrderSubmit = function(event) {
     event.preventDefault(); 
-   
-    const data = orderHandler.getOrderInputs();
-    const calculatedPrice = priceCalculator.calculateTotal(data);
+    
+    const orderData = orderHandler.getOrderInputs();
+    const qty = orderData.qty;
+    const size = orderData.size;
+    const calculatedPrice = priceCalculator.calculateTotal(orderData);
+    const totalPrice = Number(calculatedPrice);
     const timestamp = { timestamp: new Date().toISOString() };
    
 
@@ -27,7 +30,7 @@ const newOrder = {
     orderStorage.saveOrders(orders);
     orderList.renderOrders(orders);
 
-    console.log('Order Received!', data);
+    console.log('Order Received!', orderData);
 };
 
 // --- New Function: Clear the orders ---
