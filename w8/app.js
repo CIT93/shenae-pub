@@ -31,6 +31,12 @@ const newOrder = {
     orderList.renderOrders(orders);
 
     console.log('Order Received!', orderData);
+
+    // app.js
+orderList.renderOrders(orders, {
+    onDelete: handleDelete,
+    onEdit: handleEdit
+});
 };
 
 // --- New Function: Clear the orders ---
@@ -45,6 +51,15 @@ const handleClearClick = function() {
     orderList.renderOrders(orders);
     
     console.log("Orders Cleared");
+};
+
+
+const handleDelete = function(id) {
+    console.log("App.js: Requesting delete for order", id);
+};
+
+const handleEdit = function(id) {
+    console.log("App.js: Requesting edit for order", id);
 };
 
 const init = function () {
@@ -62,6 +77,12 @@ const init = function () {
     if (clearBtnEl) {
         clearBtnEl.addEventListener("click", handleClearClick);
     }
+    // app.js
+orderList.renderOrders(orders, {
+    onDelete: handleDelete,
+    onEdit: handleEdit
+});
 };
+
 
 document.addEventListener('DOMContentLoaded', init);

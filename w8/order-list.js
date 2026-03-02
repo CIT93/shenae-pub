@@ -1,3 +1,5 @@
+// order-list.js top of file
+let moduleCallbacks = {};
 const orderTableBody = document.getElementById('order-table-body');
 const tableBody = document.getElementById('order-table-body');
 
@@ -12,9 +14,27 @@ tableBody.addEventListener('click', function(event) {
     if (!id) return;
 
     // 3. Temporary Test: Log the ID to prove it works!
-    console.log("Clicked button with ID:", id); 
-});
-export function renderOrders(orders) {
+    // console.log("Clicked button with ID:", id); 
+    if (target.classList.contains('delete-btn')) {
+        if (moduleCallbacks.onDelete) {
+            moduleCallbacks.onDelete(id);
+        }
+    }
+
+    if (target.classList.contains('edit-btn')) {
+        if (moduleCallbacks.onEdit) {
+            moduleCallbacks.onedit(id);
+        }
+    }
+        })
+
+
+
+    
+    // ... rest of your code ...
+export const renderOrders = function(orders, callbacks) {
+    // Save the callbacks for later
+    moduleCallbacks = callbacks;
     // Clear tale first
     orderTableBody.innerHTML = ' ';
 
@@ -32,5 +52,6 @@ export function renderOrders(orders) {
             </td>
             `;
             orderTableBody.appendChild(row);
+
     }
 };
