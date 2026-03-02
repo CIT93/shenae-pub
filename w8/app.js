@@ -4,7 +4,7 @@ import * as orderList from './order-list.js';
 import * as orderStorage from './order-storage.js';
 
 const orderFormEl = document.getElementById("order-form");
-const clearBtnEl = document.getElementById("clear-btn"); // Add this to your HTML!
+const clearBtnEl = document.getElementById("clear-btn"); 
 const orders = [];
 
 const handleOrderSubmit = function(event) {
@@ -13,15 +13,14 @@ const handleOrderSubmit = function(event) {
     const data = orderHandler.getOrderInputs();
     const calculatedPrice = priceCalculator.calculateTotal(data);
     const timestamp = { timestamp: new Date().toISOString() };
-    const newOrder = { ...data, ...calculatedPrice, ...timestamp };
+   
 
-    // app.js - inside handleOrderSubmit
 const newOrder = {
-    id: Date.now().toString(), // <--- ADD THIS LINE (Unique ID based on time)
+    id: Date.now().toString(),
     qty: qty,
     size: size,
     totalPrice: totalPrice,
-    // ... any other properties
+  
 };
 
     orders.push(newOrder);
