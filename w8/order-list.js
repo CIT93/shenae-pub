@@ -23,7 +23,7 @@ tableBody.addEventListener('click', function(event) {
 
     if (target.classList.contains('edit-btn')) {
         if (moduleCallbacks.onEdit) {
-            moduleCallbacks.onedit(id);
+            moduleCallbacks.onEdit(id);
         }
     }
         })
@@ -35,8 +35,8 @@ tableBody.addEventListener('click', function(event) {
 export const renderOrders = function(orders, callbacks) {
     // Save the callbacks for later
     moduleCallbacks = callbacks;
-    // Clear tale first
-    orderTableBody.innerHTML = ' ';
+    // Clear table first
+    orderTableBody.innerHTML = '';
 
     for (const order of orders) {
         const row = document.createElement('tr');

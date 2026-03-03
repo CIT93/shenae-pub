@@ -10,47 +10,43 @@ const orders = [];
 const handleOrderSubmit = function(event) {
     event.preventDefault(); 
     
-    const orderData = orderHandler.getOrderInputs();
-    const qty = orderData.qty;
-    const size = orderData.size;
-    const calculatedPrice = priceCalculator.calculateTotal(orderData);
-    const totalPrice = Number(calculatedPrice);
-    const timestamp = { timestamp: new Date().toISOString() };
-   
+  const orderData = orderHandler.getOrderInputs();
+const qty = orderData.qty;
+const size = orderData.size;
+
+// calculator returns an object { totalPrice: number }
+const priceResult = priceCalculator.calculateTotal(orderData);
+const totalPrice = priceResult.totalPrice;
 
 const newOrder = {
-    id: Date.now().toString(),
-    qty: qty,
-    size: size,
-    totalPrice: totalPrice,
-  
+  id: Date.now().toString(),
+  timestamp: new Date().toISOString(),
+  qty: qty,
+  size: size,
+  totalPrice: totalPrice
 };
 
-    orders.push(newOrder);
-    orderStorage.saveOrders(orders);
-    orderList.renderOrders(orders);
+orders.push(newOrder);
+orderStorage.saveOrders(orders);
 
-    console.log('Order Received!', orderData);
-
-    // app.js
+// render ONCE, with callbacks (Step 6)
 orderList.renderOrders(orders, {
-    onDelete: handleDelete,
-    onEdit: handleEdit
+  onDelete: handleDelete,
+  onEdit: handleEdit
 });
 };
 
 // --- New Function: Clear the orders ---
 const handleClearClick = function() {
-    // 1. Empty the array (set length to 0 keeps the same array reference)
-    orders.length = 0;
-    
-    // 2. Update storage (saves the now-empty array)
-    orderStorage.saveOrders(orders);
-    
-    // 3. Update the table (renders nothing)
-    orderList.renderOrders(orders);
-    
-    console.log("Orders Cleared");
+  orders.length = 0;
+  orderStorage.saveOrders(orders);
+
+  orderList.renderOrders(orders, {
+    onDelete: handleDelete,
+    onEdit: handleEdit
+  });
+
+  console.log("Orders Cleared");
 };
 
 
@@ -63,26 +59,23 @@ const handleEdit = function(id) {
 };
 
 const init = function () {
-    console.log("App Initialized");
-    const loadedOrders = orderStorage.loadOrders();
-    
-    if (loadedOrders.length > 0) {
-        orders.push(...loadedOrders);
-        orderList.renderOrders(orders);
-    }
- 
-    orderFormEl.addEventListener("submit", handleOrderSubmit);
-    
-    // 4. Listen for the clear click
-    if (clearBtnEl) {
-        clearBtnEl.addEventListener("click", handleClearClick);
-    }
-    // app.js
-orderList.renderOrders(orders, {
+  console.log("App Initialized");
+
+  const loadedOrders = orderStorage.loadOrders();
+  if (loadedOrders.length > 0) {
+    orders.push(...loadedOrders);
+  }
+
+  orderList.renderOrders(orders, {
     onDelete: handleDelete,
     onEdit: handleEdit
-});
+  });
+
+  orderFormEl.addEventListener("submit", handleOrderSubmit);
+
+  if (clearBtnEl) {
+    clearBtnEl.addEventListener("click", handleClearClick);
+  }
 };
 
-
-document.addEventListener('DOMContentLoaded', init);
+document.addEventListener("DOMContentLoaded", init);
