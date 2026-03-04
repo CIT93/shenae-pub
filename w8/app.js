@@ -16,7 +16,7 @@ const size = orderData.size;
 
 // calculator returns an object { totalPrice: number }
 const priceResult = priceCalculator.calculateTotal(orderData);
-const totalPrice = priceResult.totalPrice;
+const totalPrice = Number(priceResult.totalPrice);
 
 const newOrder = {
   id: Date.now().toString(),
